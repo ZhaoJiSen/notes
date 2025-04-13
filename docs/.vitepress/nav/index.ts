@@ -1,3 +1,4 @@
+// TODO 分割
 export default {
   nav: [
     {
@@ -21,7 +22,6 @@ export default {
       ]
     }
   ],
-
   sidebar: {
     '/frontend-framework/Vue/': [
       {
@@ -37,10 +37,33 @@ export default {
         text: 'React 源码解析',
         collapsed: false,
       }
+    ],
+    '/build-tools/vite/': [
+      {
+        text: 'Vite',
+        collapsed: false,
+        items: [
+          {
+            text: '概述',
+            link: '/build-tools/vite/index.md'
+          },
+          {
+            text: '环境变量',
+          },
+          {
+            text: 'CSS 处理'
+          },
+          {
+            text: '插件'
+          },
+          {
+            text: '性能优化',
+            link: '/build-tools/vite/items/performance-optimization.md'
+          } 
+        ]
+      }
     ]
-      
   },
-
   socialLinks: [
     { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
   ]
