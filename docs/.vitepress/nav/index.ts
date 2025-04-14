@@ -10,7 +10,11 @@ export default {
       items: [
         {
           text: 'Vite',
-          link: '/build-tools/Vite/index.md'
+          link: '/build-tools/vite/index.md'
+        },
+        {
+          text: 'Webpack',
+          link: '/build-tools/webpack/index.md'
         }
       ]
     },
