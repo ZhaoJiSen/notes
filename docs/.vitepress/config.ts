@@ -1,4 +1,4 @@
-import nav from "./nav";
+import { config } from "./layout";
 import { defineConfig } from "vitepress";
 
 export default defineConfig({
@@ -20,7 +20,7 @@ export default defineConfig({
     ],
   ],
   themeConfig: {
-    ...nav,
+    ...config,
     logo: "/logo.jpg",
     outline: "deep",
     search: {
