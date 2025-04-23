@@ -39,4 +39,16 @@ export default {
       ],
     },
   ],
+  "/backend/Rust/": [
+    {
+      text: '基础知识',
+      collapsed: false,
+      link: '/backend/Rust/index.md'
+    },
+    {
+      text: '变量与数据类型',
+      link: '/backend/Rust/1.variable-dataTypes/index.md'
+    }
+  ]
+  
 };

@@ -27,4 +27,26 @@ export default [
       { text: "React", link: "/frontend-framework/React/jsx/index.md" },
     ],
   },
+  {
+    text: '后端',
+    items: [
+      {
+        text: 'Rust',
+        link: '/backend/rust/index.md'
+      }
+    ]
+  },
+  {
+    text: "合约开发",
+    items: [
+      {
+        text: 'Solidity',
+        link: '/contract-development/solidity/index.md'
+      },
+      {
+        text: 'Solana',
+        link: '/contract-development/solana/index.md'
+      }
+    ]
+  },
 ]
