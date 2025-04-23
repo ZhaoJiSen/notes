@@ -32,7 +32,7 @@ export default [
     items: [
       {
         text: 'Rust',
-        link: '/backend/rust/index.md'
+        link: '/backend/Rust/index.md'
       }
     ]
   },
