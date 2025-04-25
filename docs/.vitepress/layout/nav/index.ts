@@ -4,6 +4,10 @@ export default [
     link: "/",
   },
   {
+    text: "浏览器",
+    link: "/browser/index.md",
+  },
+  {
     text: "构建工具",
     items: [
       {
@@ -28,25 +32,29 @@ export default [
     ],
   },
   {
-    text: '后端',
+    text: "后端",
     items: [
       {
-        text: 'Rust',
-        link: '/backend/Rust/index.md'
-      }
-    ]
+        text: "Rust",
+        link: "/backend/Rust/index.md",
+      },
+      {
+        text: "Go",
+        link: "/backend/Go/index.md",
+      },
+    ],
   },
   {
     text: "合约开发",
     items: [
       {
-        text: 'Solidity',
-        link: '/contract-development/solidity/index.md'
+        text: "Solidity",
+        link: "/contract-development/solidity/index.md",
       },
       {
-        text: 'Solana',
-        link: '/contract-development/solana/index.md'
-      }
-    ]
+        text: "Solana",
+        link: "/contract-development/solana/index.md",
+      },
+    ],
   },
-]
+];

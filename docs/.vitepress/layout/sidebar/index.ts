@@ -49,6 +49,13 @@ export default {
       text: '变量与数据类型',
       link: '/backend/Rust/1.variable-dataTypes/index.md'
     }
+  ],
+  "/browser/": [
+    {
+      text: "宏观视角下的浏览器",
+      collapsed: false,
+      link: "/browser/index.md"
+    }
   ]
   
 };

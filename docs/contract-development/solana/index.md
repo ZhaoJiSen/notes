@@ -57,14 +57,10 @@ const connection = new Connection(clusterApiUrl('devnet'));
 通过代码领取：
 
 ```ts
-import { airdropIfRequired } from '@solana-developers/helpers';
+import { airdropIfRequired } from '@solana-developers/helpers'; 
 
 const airdrop = 
   await airdropIfRequired(connection, publicKey, amount, mainBalance);
 ```
 
 通过网页领取网站为：[https://faucet.solana.com/](https://faucet.solana.com/)
-
-
- 
-
