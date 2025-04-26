@@ -50,6 +50,19 @@ export default {
       link: '/backend/Rust/1.variable-dataTypes/index.md'
     }
   ],
+  "backend/Go": [
+    {
+      text: "基础知识",
+      collapsed: true,
+      link: "/backend/Go/index.md",
+      items: [
+        {
+          text: "变量与数据类型",
+          link: "/backend/Go/variable-dataTypes/index.md",
+        },
+      ],
+    },
+  ],
   "/browser/": [
     {
       text: "宏观视角下的浏览器",
