@@ -41,14 +41,14 @@ export default {
   ],
   "/backend/Rust/": [
     {
-      text: '基础知识',
+      text: "基础知识",
       collapsed: false,
-      link: '/backend/Rust/index.md'
+      link: "/backend/Rust/index.md",
     },
     {
-      text: '变量与数据类型',
-      link: '/backend/Rust/1.variable-dataTypes/index.md'
-    }
+      text: "变量与数据类型",
+      link: "/backend/Rust/1.variable-dataTypes/index.md",
+    },
   ],
   "backend/Go": [
     {
@@ -57,8 +57,56 @@ export default {
       link: "/backend/Go/index.md",
       items: [
         {
-          text: "变量与数据类型",
-          link: "/backend/Go/variable-dataTypes/index.md",
+          text: "变量",
+          link: "/backend/Go/variable/index.md",
+        },
+        {
+          text: "数据类型",
+          link: "/backend/Go/data-types/index.md",
+        },
+        {
+          text: "流程控制",
+          link: "/backend/Go/flow-control/index.md",
+        },
+        {
+          text: "函数",
+          link: "/backend/Go/function/index.md",
+        },
+        {
+          text: "复杂数据类型",
+          link: "/backend/Go/complex-types/index.md",
+        },
+        {
+          text: "指针",
+          link: "/backend/Go/pointer/index.md",
+        },
+        {
+          text: "结构体",
+          link: "/backend/Go/struct/index.md",
+        },
+        {
+          text: "接口",
+          link: "/backend/Go/interface/index.md",
+        },
+        {
+          text: "错误处理",
+          link: "/backend/Go/error-handling/index.md",
+        },
+        {
+          text: "并发",
+          link: "/backend/Go/concurrency/index.md",
+        },
+        {
+          text: "反射",
+          link: "/backend/Go/reflection/index.md",
+        },
+        {
+          text: "网络编程",
+          link: "/backend/Go/network-programming/index.md",
+        },
+        {
+          text: "IO 操作",
+          link: "/backend/Go/io-operation/index.md",
         },
       ],
     },
@@ -67,8 +115,7 @@ export default {
     {
       text: "宏观视角下的浏览器",
       collapsed: false,
-      link: "/browser/index.md"
-    }
-  ]
-  
+      link: "/browser/index.md",
+    },
+  ],
 };
