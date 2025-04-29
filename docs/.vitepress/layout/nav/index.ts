@@ -29,6 +29,7 @@ export default [
     items: [
       { text: "Vue", link: "/frontend-framework/Vue/index.md" },
       { text: "React", link: "/frontend-framework/React/jsx/index.md" },
+      { text: "微服务", link: "/frontend-framework/microservice/index.md" },
     ],
   },
   {
