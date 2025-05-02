@@ -27,8 +27,8 @@ export default [
   {
     text: "前端框架",
     items: [
-      { text: "Vue", link: "/frontend-framework/Vue/index.md" },
-      { text: "React", link: "/frontend-framework/React/jsx/index.md" },
+      { text: "Vue", link: "/frontend-framework/vue/index.md" },
+      { text: "React", link: "/frontend-framework/react/index.md" },
       { text: "微服务", link: "/frontend-framework/microservice/index.md" },
     ],
   },
@@ -37,11 +37,11 @@ export default [
     items: [
       {
         text: "Rust",
-        link: "/backend/Rust/index.md",
+        link: "/backend/rust/index.md",
       },
       {
         text: "Go",
-        link: "/backend/Go/index.md",
+        link: "/backend/go/index.md",
       },
     ],
   },
