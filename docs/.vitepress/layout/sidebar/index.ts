@@ -1,12 +1,44 @@
 export default {
-  "/frontend-framework/Vue/": [
+  "/frontend-framework/vue/": [
     {
       text: "Vue 源码解析",
       collapsed: false,
       items: [
         {
-          text: "1. 响应式原理",
-          link: "/frontend-framework/Vue/items/1.reactivity.md",
+          text: "Vue 的设计思想",
+          link: "/frontend-framework/vue/index.md",
+        },
+        {
+          text: "响应式原理",
+          link: "/frontend-framework/vue/reactivity-principle/index.md",
+        },
+        {
+          text: "虚拟 DOM 原理",
+          link: "/frontend-framework/vue/virtual-dom/index.md",
+        },
+        {
+          text: "组件工作流程",
+          link: "/frontend-framework/vue/component-workflow/index.md",
+        },
+        {
+          text: "异步更新过程",
+          link: "/frontend-framework/vue/async-update-process/index.md",
+        },
+        {
+          text: "API 实现",
+          link: "/frontend-framework/vue/api-implementation/index.md",
+        },
+        {
+          text: "内置组件",
+          link: "/frontend-framework/vue/built-in-components/index.md",
+        },
+        {
+          text: "编译时优化",
+          link: "/frontend-framework/vue/compile-time-optimization/index.md",
+        },
+        {
+          text: "编译时原理",
+          link: "/frontend-framework/vue/compile-time-principle/index.md",
         },
       ],
     },
@@ -39,74 +71,74 @@ export default {
       ],
     },
   ],
-  "/backend/Rust/": [
+  "/backend/rust/": [
     {
       text: "基础知识",
       collapsed: false,
-      link: "/backend/Rust/index.md",
+      link: "/backend/rust/index.md",
     },
     {
       text: "变量与数据类型",
-      link: "/backend/Rust/1.variable-dataTypes/index.md",
+      link: "/backend/rust/1.variable-dataTypes/index.md",
     },
   ],
-  "backend/Go": [
+  "/backend/go/": [
     {
       text: "基础知识",
       collapsed: true,
-      link: "/backend/Go/index.md",
+      link: "/backend/go/index.md",
       items: [
         {
           text: "变量",
-          link: "/backend/Go/variable/index.md",
+          link: "/backend/go/variable/index.md",
         },
         {
           text: "数据类型",
-          link: "/backend/Go/data-types/index.md",
+          link: "/backend/go/data-types/index.md",
         },
         {
           text: "流程控制",
-          link: "/backend/Go/flow-control/index.md",
+          link: "/backend/go/flow-control/index.md",
         },
         {
           text: "函数",
-          link: "/backend/Go/function/index.md",
+          link: "/backend/go/function/index.md",
         },
         {
           text: "复杂数据类型",
-          link: "/backend/Go/complex-types/index.md",
+          link: "/backend/go/complex-types/index.md",
         },
         {
           text: "指针",
-          link: "/backend/Go/pointer/index.md",
+          link: "/backend/go/pointer/index.md",
         },
         {
           text: "结构体",
-          link: "/backend/Go/struct/index.md",
+          link: "/backend/go/struct/index.md",
         },
         {
           text: "接口",
-          link: "/backend/Go/interface/index.md",
+          link: "/backend/go/interface/index.md",
         },
         {
           text: "错误处理",
-          link: "/backend/Go/error-handling/index.md",
+          link: "/backend/go/error-handling/index.md",
         },
         {
           text: "并发",
-          link: "/backend/Go/concurrency/index.md",
+          link: "/backend/go/concurrency/index.md",
         },
         {
           text: "反射",
-          link: "/backend/Go/reflection/index.md",
+          link: "/backend/go/reflection/index.md",
         },
         {
           text: "网络编程",
-          link: "/backend/Go/network-programming/index.md",
+          link: "/backend/go/network-programming/index.md",
         },
         {
           text: "IO 操作",
-          link: "/backend/Go/io-operation/index.md",
+          link: "/backend/go/io-operation/index.md",
         },
       ],
     },
