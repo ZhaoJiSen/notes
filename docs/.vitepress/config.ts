@@ -19,6 +19,12 @@ export default defineConfig({
       },
     ],
   ],
+  markdown: {
+    theme: {
+      light: "catppuccin-latte",
+      dark: "catppuccin-mocha",
+    },
+  },
   themeConfig: {
     ...config,
     logo: "/logo.jpg",
