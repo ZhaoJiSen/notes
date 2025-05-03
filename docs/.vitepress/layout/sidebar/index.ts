@@ -5,8 +5,12 @@ export default {
       collapsed: false,
       items: [
         {
-          text: "Vue 的设计思想",
+          text: "设计思想",
           link: "/frontend-framework/vue/index.md",
+        },
+        {
+          text: "项目搭建",
+          link: "/frontend-framework/vue/project-setup/index.md",
         },
         {
           text: "响应式原理",
