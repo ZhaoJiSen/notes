@@ -151,14 +151,192 @@ const { values: { format }, positionals } = parseArgs({
 > - **位置参数** 是指不带任何前缀（如 -- 或 -）的参数，直接跟在命令后面，通常用来指定主要的操作对象
 > - **format 参数** 是一个命令行选项参数，它通常以 --参数名 或 -缩写 的形式出现，用于为脚本传递额外的配置信息
 
-### 3.2 找寻入口文件
+### 3.2 找寻入口和出口文件
 
+在上述过程中，已经通过 `parseArgs` 函数成功获取了命令行中的相关参数信息，包括通过位置参数获得的待打包子项目名称，以及通过 format 参数指定的目标代码模块化格式。接下来，可以利用这些参数信息，确定目标子项目的入口和出口的文件路径。
+
+#### （1）入口文件
+由于项目整体采用了 ESM 模式，因此在 dev.js 文件中无法直接使用 ` __dirname` 变量来获取当前文件的目录路径。因此需要首先构造出前文件的目录路径
+
+::: code-group
+
+```js [dev.js]
+import { fileURLToPath } from "node:url";
+import { resolve, dirname } from 'node:path'
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const target = positionals.length ? positionals[0] : 'vue';
+const entry = resolve(__dirname, `../packages/${target}/src/index.ts`)
+```
+
+:::
+
+::: details 代码细节
+- `__dirname`：CJS 中的一个全局变量，用于获取 **当前文件所在目录**，常用于拼接其他文件路径、查找同目录下的资源等
+- `__filename`：CJS 中的一个全局变量，用于获取 **当前文件的完整路径**，常用于需要知道当前 JS 文件本身位置的场景
+- `import.meta.url`：ESM 中的元素属性表示当前模块的文件 URL，通常是 `file://` 协议的绝对路径
+- `dirname`: Node 内置模块 `node:path` 中的方法，用于获取某个文件路径的目录部分
+- `fileURLToPath`：Node 内置模块 `node:url` 中的方法，用于将以 `file://` 形式的 URL 转换为普通的本地文件系统路径
+
+:::
+
+#### （2）出口文件
+
+在确定入口文件路径后，还需构建相应的出口文件路径，以便进行打包结果的最终输出。
+
+::: code-group
+
+```js [dev.js]
+// 构建出一个格式为 xxx.cjs.js 的文件
+const outDir = resolve(
+  __dirname,
+  `../packages/${target}/dist/${target}.${format}.js`
+)
+```
+
+:::
+
+#### （3）引入 esbuild
+
+最后就可以引入 esbuild，实现 dev 模式下的模块打包功能，代码如下：
+
+::: code-group
+
+```js [dev.js]
+import esbuild from 'esbuild'
+
+esbuild.context({
+  entryPoints: [entry],
+  outfile: outDir,
+  format,
+  platform: format === 'cjs' ? 'node' : 'browser',
+  sourcemap: true,
+  bundle: true,
+})
+```
+
+:::
 
 ### 3.3 IIFE 全局变量名的处理
 
+在确定打包结果的模块化标准时，除了 ESM 和 CJS 之外，还有一种选择是 IIFE 模式。在 IIFE 模式下，通常需要在全局作用域中定义一个全局变量作为入口。例如，通过 CDN 引入 Vue 时，可以使用 `window.Vue.xxx` 来访问其 API。
+
+因此，为了在 IIFE 模式下正确暴露一个全局变量，需要在子项目的 package.json 中进行相应设置。这样，在构建不同子包时，就可以动态地暴露出对应的全局变量。
+
+::: code-group
+
+```txt [子包项目结构约定]
+packages
+├─ package1
+│  ├─ src
+│  │  └─ index.ts 
+│  └─ package.json
+```
+
+```json [package.json]
+{
+  "name": "reactivity",
+  "version": "1.0.0",
+  "description": "reactivity 模块",
+  "main": "index.js",
+  "module": "dist/reactivity.esm.js",
+  "files": [
+    "index.js",
+    "dist"
+  ],
+  "sideEffects": false,
+  "buildOptions": {
+    "name": "VueReactivity",
+    "formats": [
+      "esm-bundler",
+      "esm-browser",
+      "cjs",
+      "global"
+    ]
+  },
+  "devDependencies": {
+
+  },
+  "scripts": {
+  }
+}
+
+```
+
+```js [dev.js]
+// createRequire 用于在 ESM 下创建一个 CJS 的 require 函数
+const require = createRequire(import.meta.url)
+
+// 获取不同子包中的 package.json 文件配置，
+// 然后通过各自 package.json 中的 buildOptions.name 作为全局变量名称
+const packageJson = require(`../packages/${target}/package.json`)
+
+esbuild
+  .context({
+    entryPoints: [entry],
+    outfile: outDir,
+    format,
+    platform: format === 'cjs' ? 'node' : 'browser',
+    sourcemap: true,
+    bundle: true,
+    globalName: packageJson.buildOptions.name,
+  })
+  .then((ctx) => ctx.watch())
+```
+
+:::
 
 ### 3.4 完整代码
 
+```js
+import esbuild from 'esbuild'
+import { parseArgs } from 'node:util'
+import { fileURLToPath } from 'node:url'
+import { createRequire } from 'node:module'
+import { resolve, dirname } from 'node:path'
+
+const {
+  values: { format },
+  positionals,
+} = parseArgs({
+  allowPositionals: true,
+  options: {
+    format: {
+      type: 'string',
+      short: 'f',
+      default: 'esm',
+    },
+  },
+})
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+const require = createRequire(import.meta.url)
+
+const target = positionals.length ? positionals[0] : 'vue'
+const packageJson = require(`../packages/${target}/package.json`)
+const entry = resolve(__dirname, `../packages/${target}/src/index.ts`)
+const outDir = resolve(
+  __dirname,
+  `../packages/${target}/dist/${target}.${format}.js`
+)
+
+
+esbuild
+  .context({
+    entryPoints: [entry],
+    outfile: outDir,
+    format,
+    platform: format === 'cjs' ? 'node' : 'browser',
+    sourcemap: true,
+    bundle: true,
+    globalName: packageJson.buildOptions.name,
+  })
+  .then((ctx) => ctx.watch())
+
+```
 
 ## 4. 安装 Monorepo 中的依赖
  
