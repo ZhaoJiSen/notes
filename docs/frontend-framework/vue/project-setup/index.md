@@ -120,9 +120,16 @@ pnpm add @types/node -D
 
 ### 3.1 解析命令参数
 
-解析命令参数的主要目的是让打包脚本 **具备灵活性**。通过命令行传递不同的参数，可以：动态指定要打包的子包（如 vue、reactivity 等）以及选择输出的模块格式（如 esm、cjs 等）。
+解析命令参数的主要目的是让打包脚本 **具备灵活性**。通过命令行传递不同的参数，来动态指定要打包的子包（如 vue、reactivity 等）以及选择输出的模块格式（如 esm、cjs 等）。这样，无需修改脚本源码，只需调整命令参数，就能快速实现不同子包和不同格式的打包需求。
 
-这样，无需修改脚本源码，只需调整命令参数，就能快速实现不同子包和不同格式的打包需求。实现方式就是通过 `node:util` 模块的 `parseArgs` 函数来解析析命令行参数，具体实现如下：
+::: details 位置参数与 format 参数
+
+- **位置参数** 是指不带任何前缀（如 -- 或 -）的参数，直接跟在命令后面，通常用来指定主要的操作对象
+- **format 参数** 是一个命令行选项参数，它通常以 --参数名 或 -缩写 的形式出现，用于为脚本传递额外的配置信息
+
+:::
+
+实现方式是通过 `node:util` 模块的 `parseArgs` 函数来解析析命令行参数，具体实现如下：
 
 ```js
 import { parseArgs } from "node:util";
@@ -147,10 +154,6 @@ const { values: { format }, positionals } = parseArgs({
 // allowPositionals 的值为 ["vue"]
 ```
 
-> [!TIP] 位置参数与 format 参数
-> - **位置参数** 是指不带任何前缀（如 -- 或 -）的参数，直接跟在命令后面，通常用来指定主要的操作对象
-> - **format 参数** 是一个命令行选项参数，它通常以 --参数名 或 -缩写 的形式出现，用于为脚本传递额外的配置信息
-
 ### 3.2 找寻入口和出口文件
 
 在上述过程中，已经通过 `parseArgs` 函数成功获取了命令行中的相关参数信息，包括通过位置参数获得的待打包子项目名称，以及通过 format 参数指定的目标代码模块化格式。接下来，可以利用这些参数信息，确定目标子项目的入口和出口的文件路径。
@@ -173,7 +176,7 @@ const entry = resolve(__dirname, `../packages/${target}/src/index.ts`)
 
 :::
 
-::: details 代码细节
+::: details API 解释
 - `__dirname`：CJS 中的一个全局变量，用于获取 **当前文件所在目录**，常用于拼接其他文件路径、查找同目录下的资源等
 - `__filename`：CJS 中的一个全局变量，用于获取 **当前文件的完整路径**，常用于需要知道当前 JS 文件本身位置的场景
 - `import.meta.url`：ESM 中的元素属性表示当前模块的文件 URL，通常是 `file://` 协议的绝对路径
@@ -237,7 +240,7 @@ packages
 
 ```json [package.json]
 {
-  "name": "reactivity",
+  "name": "@vue/reactivity",
   "version": "1.0.0",
   "description": "reactivity 模块",
   "main": "index.js",
@@ -338,5 +341,27 @@ esbuild
 
 ```
 
-## 4. 安装 Monorepo 中的依赖
- 
+## 4. 安装子项目作为依赖
+
+Vue 源码中，存在一个 `shared` 子项目，专门用于暴露一些通用的工具函数。在 Monorepo 架构下，若其他子项目需要使用这些工具函数，单纯使用 `import` 语句直接导入是不可行的。为了确保依赖的正确性和一致性，必须通过 `pnpm add` 命令显式引入所需的包。
+
+::: details 参数解释：
+
+- `--wrokspace` 表示优先使用工作区中定义的依赖，以防安装 npm 官方中所对应的包
+- `--filter` 表示指定只对特定的子项目执行操作
+
+:::
+
+例如，要在某个子项目中引入 shared 中的工具函数，可以执行以下命令：
+```shell
+pnpm add @vue/shared --wrokspace --filter @vue/reactivity
+```
+安装后，还需额外在 `tsconfig.json` 中配置 `paths` 与 `baseURL` 以解决类型声明的问题
+
+```json
+  "baseUrl": "./",
+  "path": [
+    "@vue/*": ["packages/*/src/index.ts"]
+  ]
+```
+那么此时在 `reactivity` 的子项目中，就可以使用来自 `shared` 项目中暴露出的函数了
