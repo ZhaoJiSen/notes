@@ -22,6 +22,10 @@ export default [
         text: "Vite",
         link: "/build-tools/vite/index.md",
       },
+      {
+        text: "工程化规范",
+        link: "/build-tools/engineering-specifications/index.md",
+      },
     ],
   },
   {
