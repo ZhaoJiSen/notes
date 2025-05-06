@@ -2,8 +2,8 @@ import { config } from "./layout";
 import { defineConfig } from "vitepress";
 
 export default defineConfig({
-  title: "森弟儿的笔记空间",
-  description: "我的个人笔记",
+  title: "弟弟森的笔记空间",
+  description: "弟弟森的个人笔记",
   base: "/notes/",
   head: [
     ["link", { rel: "preconnect", href: "https://fonts.googleapis.com" }],
