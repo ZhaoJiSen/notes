@@ -154,4 +154,80 @@ export default {
       link: "/browser/index.md",
     },
   ],
+  "/frontend/typescript/": [
+    {
+      text: "基础语法",
+      collapsed: false,
+      items: [
+        {
+          text: "类型系统",
+          items: [
+            {
+              text: "基本类型",
+              link: "/frontend/typescript/basic-syntax/basic-types.md",
+            },
+            {
+              text: "引用类型",
+              collapsed: false,
+              items: [
+                {
+                  text: "数组",
+                  link: "/frontend/typescript/basic-syntax/array.md",
+                },
+                {
+                  text: "元组",
+                  link: "/frontend/typescript/basic-syntax/tuple.md",
+                },
+                {
+                  text: "接口与类型别名",
+                  link: "/frontend/typescript/basic-syntax/interface.md",
+                },
+                {
+                  text: "函数",
+                  link: "/frontend/typescript/basic-syntax/function.md",
+                },
+                {
+                  text: "类",
+                  link: "/frontend/typescript/basic-syntax/class.md",
+                },
+                {
+                  text: "枚举",
+                  link: "/frontend/typescript/basic-syntax/enum.md",
+                },
+              ],
+            },
+            {
+              text: "泛型",
+              link: "/frontend/typescript/basic-syntax/",
+            },
+            {
+              text: "类型断言与非空断言",
+              link: "/frontend/typescript/basic-syntax/type-assertion.md",
+            },
+            {
+              text: "联合类型和交叉类型",
+              link: "/frontend/typescript/basic-syntax/union-and-intersection-types.md",
+            },
+          ],
+        },
+        {
+          text: "模块及命名空间",
+        },
+        {
+          text: "内置类型工具",
+        },
+        {
+          text: "装饰器",
+        },
+      ],
+    },
+    {
+      text: "tsconfig 详解",
+      collapsed: false,
+      link: "/frontend/typescript/tsconfig/index.md",
+    },
+    {
+      text: "Axios 封装",
+    },
+  ],
 };

@@ -4,6 +4,19 @@ export default [
     link: "/",
   },
   {
+    text: "前端",
+    items: [
+      {
+        text: "JavaScript",
+        link: "/frontend/javascript/index.md",
+      },
+      {
+        text: "TypeScript",
+        link: "/frontend/typescript/basic-syntax/index.md",
+      },
+    ],
+  },
+  {
     text: "浏览器",
     link: "/browser/index.md",
   },
