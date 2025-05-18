@@ -18,8 +18,7 @@ fn main() {
   let mut x = 1; // [!code focus]
 
   x = 2;  // [!code focus]
-
-  println!("x = {}", x);
+ 
 }
 ```
 
@@ -88,7 +87,8 @@ fu main(){
   unsafe {
       MUT_HELLO_WORLD = "mutable world!";
   }
-
+ 
   // 在 unsafe 外是无法打印 MUT_HELLO_WORLD 的
 }
 ```
+

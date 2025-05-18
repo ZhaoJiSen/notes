@@ -47,16 +47,38 @@ export default {
       ],
     },
   ],
-  "/frontend-framework/React/": [
+  "/frontend-framework/react/": [
     {
       text: "JSX",
       collapsed: false,
-      link: "/frontend-framework/React/jsx/index.md",
+      link: "/frontend-framework/react/jsx/index.md",
     },
     {
-      text: "Props",
+      text: "Hooks",
+    },
+    {
+      text: "组件化",
       collapsed: false,
-      link: "/frontend-framework/React/props/index.md",
+      items: [
+        {
+          text: "组件通讯",
+          link: "/frontend-framework/react/componentization/component-communication.md",
+        },
+        {
+          text: "受控组件",
+          link: "/frontend-framework/react/componentization/controlled-component.md",
+        },
+        {
+          text: "异步组件",
+          link: "/frontend-framework/react/componentization/async-component.md",
+        },
+      ],
+    },
+    {
+      text: "状态管理",
+    },
+    {
+      text: "路由",
     },
   ],
   "/build-tools/vite/": [

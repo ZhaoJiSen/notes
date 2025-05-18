@@ -45,7 +45,7 @@ export default [
     text: "前端框架",
     items: [
       { text: "Vue", link: "/frontend-framework/vue/index.md" },
-      { text: "React", link: "/frontend-framework/react/index.md" },
+      { text: "React", link: "/frontend-framework/react/jsx/index.md" },
       { text: "微服务", link: "/frontend-framework/microservice/index.md" },
     ],
   },

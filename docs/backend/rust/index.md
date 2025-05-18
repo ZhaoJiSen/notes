@@ -10,9 +10,9 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 1. 更新 Rust: `rustup update`
 2. 卸载 Rust: `rustup uninstall`
-3. 添加组件: `rustup component add <component>`
-4. 查看 Rust 版本: `rustc --version`
-5. 查看 Rust 安装位置: `rustc --print sysroot`
+3. 查看 Rust 版本: `rustc --version`
+4. 查看 Rust 安装位置: `rustc --print sysroot`
+5. 添加组件: `rustup component add <component>`
 
 ### 2. 编译器与包管理工具
 
@@ -50,6 +50,7 @@ Rust 的包管理工具是 `Cargo`，用于管理 Rust 项目。在使用 Cargo 
 4. 运行项目: `cargo run`（包含两部分：构建和执行二进制文件）
 5. 发布项目: `cargo publish`
 6. 查看版本: `cargo --version`
+
 :::
 
 通过 `cargo new` 命令创建项目时，会自动生成一个 `Cargo.toml` 文件，用于管理项目依赖。该文件包含以下内容:
