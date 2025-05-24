@@ -99,13 +99,31 @@ export default {
   ],
   "/backend/rust/": [
     {
-      text: "基础知识",
+      text: "Rust 基础",
       collapsed: false,
       link: "/backend/rust/index.md",
-    },
-    {
-      text: "变量与数据类型",
-      link: "/backend/rust/1.variable-dataTypes/index.md",
+      items: [
+        {
+          text: "变量与常量",
+          link: "/backend/rust/basic/variable.md",
+        },
+        {
+          text: "数据类型",
+          link: "/backend/rust/basic/data-types.md",
+        },
+        {
+          text: "函数",
+          link: "/backend/rust/basic/function.md",
+        },
+        {
+          text: "流程控制",
+          link: "/backend/rust/basic/flow-control.md",
+        },
+        {
+          text: "所有权",
+          link: "/backend/rust/basic/ownership.md",
+        },
+      ],
     },
   ],
   "/backend/go/": [
