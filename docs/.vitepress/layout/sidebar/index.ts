@@ -120,8 +120,18 @@ export default {
           link: "/backend/rust/basic/flow-control.md",
         },
         {
-          text: "所有权与生命周期",
-          link: "/backend/rust/basic/ownership.md",
+          text: "所有权和借用",
+          collapsed: false,
+          items: [
+            {
+              text: "所有权",
+              link: "/backend/rust/basic/ownership.md",
+            },
+            {
+              text: "引用与借用",
+              link: "/backend/rust/basic/reference-and-borrowing.md",
+            },
+          ],
         },
       ],
     },
