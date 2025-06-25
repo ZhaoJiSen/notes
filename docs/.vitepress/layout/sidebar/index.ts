@@ -120,7 +120,7 @@ export default {
           link: "/backend/rust/basic/flow-control.md",
         },
         {
-          text: "所有权",
+          text: "所有权与生命周期",
           link: "/backend/rust/basic/ownership.md",
         },
       ],
