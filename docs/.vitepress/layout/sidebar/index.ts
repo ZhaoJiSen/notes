@@ -99,7 +99,7 @@ export default {
   ],
   "/backend/rust/": [
     {
-      text: "Rust 基础",
+      text: "Rust",
       collapsed: false,
       link: "/backend/rust/index.md",
       items: [
@@ -116,10 +116,6 @@ export default {
           link: "/backend/rust/basic/function.md",
         },
         {
-          text: "流程控制",
-          link: "/backend/rust/basic/flow-control.md",
-        },
-        {
           text: "所有权和借用",
           collapsed: false,
           items: [
@@ -132,6 +128,122 @@ export default {
               link: "/backend/rust/basic/reference-and-borrowing.md",
             },
           ],
+        },
+        {
+          text: "复合类型",
+          collapsed: false,
+          items: [
+            {
+              text: "字符串与切片",
+              link: "/backend/rust/basic/string-and-slice.md",
+            },
+            {
+              text: "元组",
+            },
+            {
+              text: "结构体",
+            },
+            {
+              text: "枚举",
+            },
+            {
+              text: "数组",
+            },
+          ],
+        },
+        {
+          text: "流程控制",
+          link: "/backend/rust/basic/flow-control.md",
+        },
+        {
+          text: "模式匹配",
+          collapsed: false,
+          items: [
+            {
+              text: "match 和 if let",
+            },
+            {
+              text: "解构 Option",
+            },
+            {
+              text: "模式与适用场景",
+            },
+            {
+              text: "全模式列表",
+            },
+          ],
+        },
+        {
+          text: "方法",
+        },
+        {
+          text: "泛型和 trait",
+          collapsed: false,
+          items: [
+            {
+              text: "泛型",
+            },
+            {
+              text: "trait",
+            },
+            {
+              text: "trait 对象",
+            },
+          ],
+        },
+        {
+          text: "集合类型",
+          collapsed: false,
+          items: [
+            {
+              text: "Vector",
+            },
+            {
+              text: "HashMap",
+            },
+          ],
+        },
+        {
+          text: "返回值和错误处理",
+          collapsed: false,
+          items: [
+            {
+              text: "panic!",
+            },
+            {
+              text: "返回值 Result 和 ?",
+            },
+          ],
+        },
+        {
+          text: "智能指针",
+          collapsed: false,
+          items: [
+            {
+              text: "Box",
+            },
+          ],
+        },
+        {
+          text: "函数式编程",
+          collapsed: false,
+          items: [
+            {
+              text: "迭代器",
+            },
+            {
+              text: "闭包",
+            },
+          ],
+        },
+        {
+          text: "生命周期",
+        },
+        {
+          text: "多线程和并发编程",
+        },
+        {
+          text: "异步编程",
         },
       ],
     },
